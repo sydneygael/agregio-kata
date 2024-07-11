@@ -77,9 +77,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
         offer.addTimeBlock(new TimeBlock(0, 16));
 
-        assertThrows(TimeBlockExceedingException.class, () -> {
-            offer.addTimeBlock(new TimeBlock(16, 9));
-        });
+        assertThrows(TimeBlockExceedingException.class, () -> offer.addTimeBlock(new TimeBlock(16, 9)));
     }
 
     @Test
@@ -91,8 +89,6 @@ import static org.junit.jupiter.api.Assertions.*;
         offer.addTimeBlock(new TimeBlock(0, 8));
         offer.addTimeBlock(new TimeBlock(8, 8));
 
-        assertThrows(InvalidTimeBlockException.class, () -> {
-            offer.addTimeBlock(new TimeBlock(7, 8));
-        });
+        assertThrows(InvalidTimeBlockException.class, () -> offer.addTimeBlock(new TimeBlock(7, 8)));
     }
 }
