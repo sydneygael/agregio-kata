@@ -31,12 +31,12 @@ public class OfferEntity {
     @Column(nullable = false)
     private Market market;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "offer_park",
             joinColumns = @JoinColumn(name = "offer_id"),
             inverseJoinColumns = @JoinColumn(name = "park_id"))
     private List<ParkEntity> parks;
 
-    @OneToMany(mappedBy = "offer", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "offer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<TimeBlockEntity> timeBlocks;
 }

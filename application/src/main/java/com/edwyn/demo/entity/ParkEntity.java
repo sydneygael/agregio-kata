@@ -29,6 +29,6 @@ public class ParkEntity {
 
     private double capacity;
 
-    @ManyToMany(mappedBy = "parks")
+    @ManyToMany(mappedBy = "parks", fetch = FetchType.LAZY)
     private List<OfferEntity> offers;
 }

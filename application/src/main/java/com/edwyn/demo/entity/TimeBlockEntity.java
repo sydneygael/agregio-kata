@@ -23,7 +23,7 @@ public class TimeBlockEntity {
     @Column(nullable = false)
     private int duration;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "offer_id", nullable = false)
     private OfferEntity offer;
 }
