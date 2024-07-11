@@ -1,0 +1,54 @@
+package com.edwyn.demo.domain.service;
+
+import com.edwyn.demo.domain.exception.TimeBlockExceedingException;
+import com.edwyn.demo.domain.model.Market;
+import com.edwyn.demo.domain.model.Offer;
+import com.edwyn.demo.domain.model.Park;
+import com.edwyn.demo.domain.model.TimeBlock;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+/**
+ * Domain service for managing offers.
+ */
+public class OfferDomainService {
+
+    /**
+     * Creates an offer and validates the time blocks.
+     *
+     * @param quantity   the quantity of energy in MW
+     * @param priceFloor the minimum price at which the energy will be sold
+     * @param market     the market where the offer is placed
+     * @param parks      the list of parks that will produce the energy
+     * @param timeBlocks the list of time blocks for the offer
+     * @return the created offer
+     */
+    public Offer createOffer(double quantity, BigDecimal priceFloor, Market market, List<Park> parks, List<Integer> timeBlocks) {
+        Offer offer = new Offer(quantity, priceFloor, market, parks);
+
+        int startHour = 0;
+        for (int duration : timeBlocks) {
+            TimeBlock timeBlock = new TimeBlock(startHour, duration);
+            offer.addTimeBlock(timeBlock);
+            startHour += duration;
+        }
+
+        if (!offer.validateTimeBlocks()) {
+            throw new TimeBlockExceedingException("Total duration of time blocks must be 24 hours");
+        }
+
+        return offer;
+    }
+
+    /**
+     * Validates the time blocks of an offer.
+     *
+     * @param offer the offer to validate
+     * @return true if the offer is valid, false otherwise
+     */
+    public boolean isValidOffer(Offer offer) {
+        return offer.validateTimeBlocks();
+    }
+}
+

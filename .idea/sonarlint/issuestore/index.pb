@@ -28,3 +28,11 @@ j
 :domain/src/main/java/com/edwyn/demo/domain/model/Park.java,7\5\754274476f7c0b53c60833f735f21a1c3f4f17b8
 o
 ?domain/src/main/java/com/edwyn/demo/domain/model/TimeBlock.java,a\8\a813b335da173aec4a31bbdc2ad6b16e128daca0
+…
+Udomain/src/main/java/com/edwyn/demo/domain/exception/TimeBlockExceedingException.java,a\6\a6860bf62a1fe030e7acae6bbaeb89a43516c75a
+ƒ
+Sdomain/src/main/java/com/edwyn/demo/domain/exception/InvalidTimeBlockException.java,2\b\2b5ffd135ca6f31e73c2f5d7b75ef0c63a0257f0
+z
+Jdomain/src/main/java/com/edwyn/demo/domain/service/OfferDomainService.java,d\8\d849c38e21430000e409d99c1a9dbe2a3542df40
+~
+Ndomain/src/test/java/com/edwyn/demo/domain/service/OfferDomainServiceTest.java,1\3\13d0d4cdbb0471d3a596eb3314bc2e1456db50fa

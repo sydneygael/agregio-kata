@@ -1,6 +1,5 @@
 package com.edwyn.demo.domain.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,7 +8,6 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class TimeBlock {
     /**
      * Unique identifier for the time block.
@@ -25,4 +23,9 @@ public class TimeBlock {
      * Duration of the time block in hours.
      */
     private int duration;
+
+    public TimeBlock(int startHour, int duration) {
+        this.startHour = startHour;
+        this.duration = duration;
+    }
 }

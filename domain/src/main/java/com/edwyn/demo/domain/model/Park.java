@@ -29,5 +29,5 @@ public class Park {
     /**
      * Capacity of the park in MW.
      */
-    private double capacity;
+    private Double capacity;
 }
