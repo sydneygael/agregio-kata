@@ -14,3 +14,17 @@ G.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec,8\6\86
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 
 Q.idea/sonarlint/securityhotspotstore/0/6/069e50ec4295bd2cff143cbc781149c8328698c8,c\e\ce63e58bcc511408de8e0306269c84e3325796a1
+>
+domain/pom.xml,8\b\8b11330a6810846535e4b5ba2024ccfcee112862
+]
+-domain/src/main/java/com/edwyn/demo/Main.java,5\a\5a5669ddcd6d3fb66b45e1adb8be8aeba5803ef5
+l
+<domain/src/main/java/com/edwyn/demo/domain/model/Market.java,6\4\64b8eac760a352a82a5cc11b40d01023e0389d52
+k
+;domain/src/main/java/com/edwyn/demo/domain/model/Offer.java,e\7\e76beeb59d15ee1e15f773a8fc323243b827a089
+n
+>domain/src/main/java/com/edwyn/demo/domain/model/ParkType.java,f\1\f1d63d76b6a2e1ac6f5bb97a86daeabe0d64f300
+j
+:domain/src/main/java/com/edwyn/demo/domain/model/Park.java,7\5\754274476f7c0b53c60833f735f21a1c3f4f17b8
+o
+?domain/src/main/java/com/edwyn/demo/domain/model/TimeBlock.java,a\8\a813b335da173aec4a31bbdc2ad6b16e128daca0

@@ -7,6 +7,9 @@
     <artifactId>agregio-app</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
+    <modules>
+        <module>domain</module>
+    </modules>
 
     <properties>
         <java.version>21</java.version>
