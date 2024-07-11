@@ -1,8 +1,10 @@
 package com.edwyn.demo.domain.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import java.util.List;
  */
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Offer {
     /**
      * Unique identifier for the offer.
@@ -25,7 +28,7 @@ public class Offer {
     /**
      * Minimum price at which the energy will be sold.
      */
-    private double priceFloor;
+    private BigDecimal priceFloor;
 
     /**
      * Market where the offer is placed.
@@ -42,10 +45,12 @@ public class Offer {
      */
     private List<TimeBlock> timeBlocks = new ArrayList<>();
 
-    public Offer(double quantity, double priceFloor, Market market, List<Park> parks) {
-        this.quantity = quantity;
-        this.priceFloor = priceFloor;
-        this.market = market;
-        this.parks = parks;
+    public void addTimeBlock(TimeBlock timeBlock) {
+        this.timeBlocks.add(timeBlock);
+    }
+
+    public boolean validateTimeBlocks() {
+        int totalHours = this.timeBlocks.stream().mapToInt(TimeBlock::getDuration).sum();
+        return totalHours == 24;
     }
 }
