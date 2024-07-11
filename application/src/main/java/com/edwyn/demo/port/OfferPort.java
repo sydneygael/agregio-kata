@@ -9,7 +9,6 @@ import java.util.List;
  */
 public interface OfferPort {
     Offer save(Offer offer);
-    List<Offer> getOffers();
     Offer findOfferWithParks(Long offerId);
     List<Offer> findByMarket(String market);
 }

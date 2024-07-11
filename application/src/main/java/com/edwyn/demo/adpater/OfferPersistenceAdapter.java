@@ -32,7 +32,6 @@ public class OfferPersistenceAdapter implements OfferPort {
         return offerMapper.toDomain(savedEntity);
     }
 
-    @Override
     public List<Offer> getOffers() {
         return offerRepository.findAll().stream().map(offerMapper::toDomain).toList();
     }
