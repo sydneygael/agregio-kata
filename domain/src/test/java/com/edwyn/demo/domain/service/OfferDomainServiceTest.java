@@ -13,13 +13,13 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Unit tests for the OfferDomainService.
  */
- class OfferDomainServiceTest {
+class OfferDomainServiceTest {
 
     @Test
     void testValidateTimeBlocks() {
         //Given
         Market market = Market.RESERVE_PRIMAIRE;
-        List<Park> parks = List.of(new Park(1L, "Park1", ParkType.SOLAR, 100.0));
+        List<Park> parks = List.of(new Park("Park1", ParkType.SOLAR, 100.0));
         Offer offer = new Offer(100, new BigDecimal("50.00"), market, parks);
         //when
         offer.addTimeBlock(new TimeBlock(0, 8));
@@ -33,7 +33,7 @@ import static org.junit.jupiter.api.Assertions.*;
     @Test
     void testInvalidTimeBlocks() {
         Market market = Market.RESERVE_PRIMAIRE;
-        List<Park> parks = List.of(new Park(1L, "Park1", ParkType.SOLAR, 100.0));
+        List<Park> parks = List.of(new Park("Park1", ParkType.SOLAR, 100.0));
         Offer offer = new Offer(100, new BigDecimal("50.00"), market, parks);
 
         offer.addTimeBlock(new TimeBlock(0, 10));
@@ -48,7 +48,7 @@ import static org.junit.jupiter.api.Assertions.*;
     @Test
     void testCreateOffer() {
         Market market = Market.RESERVE_PRIMAIRE;
-        List<Park> parks = List.of(new Park(1L, "Park1", ParkType.SOLAR, 100.0));
+        List<Park> parks = List.of(new Park("Park1", ParkType.SOLAR, 100.0));
         List<Integer> timeBlocks = List.of(8, 8, 8);
 
         var offerDomainService = new OfferDomainService();
@@ -61,7 +61,7 @@ import static org.junit.jupiter.api.Assertions.*;
     @Test
     void testCreateInvalidOffer() {
         Market market = Market.RESERVE_PRIMAIRE;
-        List<Park> parks = List.of(new Park(1L, "Park1", ParkType.SOLAR, 100.0));
+        List<Park> parks = List.of(new Park("Park1", ParkType.SOLAR, 100.0));
         List<Integer> timeBlocks = List.of(10, 10, 4);
 
         var offerDomainService = new OfferDomainService();
@@ -72,7 +72,7 @@ import static org.junit.jupiter.api.Assertions.*;
     @Test
     void testAddInvalidTimeBlockExceedingLimit() {
         Market market = Market.RESERVE_PRIMAIRE;
-        List<Park> parks = List.of(new Park(1L, "Park1", ParkType.SOLAR, 100.0));
+        List<Park> parks = List.of(new Park("Park1", ParkType.SOLAR, 100.0));
         Offer offer = new Offer(100, new BigDecimal("50.00"), market, parks);
 
         offer.addTimeBlock(new TimeBlock(0, 16));
@@ -83,7 +83,7 @@ import static org.junit.jupiter.api.Assertions.*;
     @Test
     void testAddInvalidTimeBlockEarlierStartHour() {
         Market market = Market.RESERVE_PRIMAIRE;
-        List<Park> parks = List.of(new Park(1L, "Park1", ParkType.SOLAR, 100.0));
+        List<Park> parks = List.of(new Park("Park1", ParkType.SOLAR, 100.0));
         Offer offer = new Offer(100, new BigDecimal("50.00"), market, parks);
 
         offer.addTimeBlock(new TimeBlock(0, 8));

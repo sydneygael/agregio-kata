@@ -1,5 +1,6 @@
 package com.edwyn.demo.domain.service;
 
+import com.edwyn.demo.domain.exception.InvalidTimeBlockException;
 import com.edwyn.demo.domain.exception.TimeBlockExceedingException;
 import com.edwyn.demo.domain.model.Market;
 import com.edwyn.demo.domain.model.Offer;
@@ -24,7 +25,7 @@ public class OfferDomainService {
      * @param timeBlocks the list of time blocks for the offer
      * @return the created offer
      */
-    public Offer createOffer(double quantity, BigDecimal priceFloor, Market market, List<Park> parks, List<Integer> timeBlocks) {
+    public Offer createOffer(double quantity, BigDecimal priceFloor, Market market, List<Park> parks, List<Integer> timeBlocks) throws InvalidTimeBlockException, TimeBlockExceedingException {
         Offer offer = new Offer(quantity, priceFloor, market, parks);
 
         int startHour = 0;

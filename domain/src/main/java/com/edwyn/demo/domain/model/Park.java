@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Park {
     /**
      * Unique identifier for the park.
@@ -30,4 +29,10 @@ public class Park {
      * Capacity of the park in MW.
      */
     private Double capacity;
+
+    public Park(String name, ParkType type, Double capacity) {
+        this.name = name;
+        this.type = type;
+        this.capacity = capacity;
+    }
 }

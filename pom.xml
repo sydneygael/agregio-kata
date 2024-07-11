@@ -7,8 +7,10 @@
     <artifactId>agregio-app</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
+
     <modules>
         <module>domain</module>
+        <module>application</module>
     </modules>
 
     <properties>
@@ -51,6 +53,12 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.edwyn.demo</groupId>
+            <artifactId>domain</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <!-- tests -->
