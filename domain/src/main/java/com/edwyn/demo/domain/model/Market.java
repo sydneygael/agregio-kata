@@ -1,7 +1,11 @@
 package com.edwyn.demo.domain.model;
+
+import lombok.Getter;
+
 /**
  * Enum representing the three main energy markets. (extensible)
  */
+@Getter
 public enum Market {
     RESERVE_PRIMAIRE("Réserve Primaire"),
     RESERVE_SECONDAIRE("Réserve Secondaire"),
@@ -11,9 +15,5 @@ public enum Market {
 
     Market(String description) {
         this.description = description;
-    }
-
-    public String getDescription() {
-        return description;
     }
 }

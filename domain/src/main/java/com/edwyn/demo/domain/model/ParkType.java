@@ -1,8 +1,11 @@
 package com.edwyn.demo.domain.model;
 
+import lombok.Getter;
+
 /**
  * Enum representing the type of the park.
  */
+@Getter
 public enum ParkType {
     SOLAR("Solar"),
     WIND("Wind"),
@@ -15,9 +18,5 @@ public enum ParkType {
 
     ParkType(String description) {
         this.description = description;
-    }
-
-    public String getDescription() {
-        return description;
     }
 }
