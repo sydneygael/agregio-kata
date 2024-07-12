@@ -21,16 +21,13 @@ public class OfferService {
 
     private final OfferDomainService offerDomainService;
     private final OfferPort offerPort;
-    private final OfferMapper offerMapper;
     private final ParkPort parkPort;
 
     public OfferService(OfferDomainService offerDomainService,
                         OfferPort offerPort,
-                        OfferMapper offerMapper,
                         ParkPort parkPort) {
         this.offerDomainService = offerDomainService;
         this.offerPort = offerPort;
-        this.offerMapper = offerMapper;
         this.parkPort = parkPort;
     }
 
