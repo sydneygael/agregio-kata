@@ -6,6 +6,7 @@ import com.edwyn.demo.domain.service.OfferDomainService;
 import com.edwyn.demo.dto.CreateOfferRequest;
 import com.edwyn.demo.mapper.OfferMapper;
 import com.edwyn.demo.port.OfferPort;
+import com.edwyn.demo.port.ParkPort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,18 +22,33 @@ public class OfferService {
     private final OfferDomainService offerDomainService;
     private final OfferPort offerPort;
     private final OfferMapper offerMapper;
+    private final ParkPort parkPort;
 
-    public OfferService(OfferDomainService offerDomainService, OfferPort offerPort, OfferMapper offerMapper) {
+    public OfferService(OfferDomainService offerDomainService,
+                        OfferPort offerPort,
+                        OfferMapper offerMapper,
+                        ParkPort parkPort) {
         this.offerDomainService = offerDomainService;
         this.offerPort = offerPort;
         this.offerMapper = offerMapper;
+        this.parkPort = parkPort;
     }
 
     @Transactional
     public Offer createOffer(CreateOfferRequest request) {
-        List<Park> parks = offerMapper.toParks(request);
         BigDecimal priceFloor = new BigDecimal(request.priceFloor());
-        var offer = offerDomainService.createOffer(request.quantity(), priceFloor, request.market(), parks, request.timeBlocks());
+        List<Park> parks = request.parks().stream().map(park -> {
+            if (park.getId() != null) {
+                return parkPort.findById(park.getId());
+            } else {
+                return parkPort.save(park);
+            }
+        }).toList();
+        var offer = offerDomainService.createOffer(
+                request.quantity(),
+                priceFloor, request.market(),
+                parks,
+                request.timeBlocks());
         return offerPort.save(offer);
     }
 

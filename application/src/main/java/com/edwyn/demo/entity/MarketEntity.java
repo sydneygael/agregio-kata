@@ -1,21 +1,29 @@
 package com.edwyn.demo.entity;
 
-import jakarta.persistence.*;
+import com.edwyn.demo.domain.model.Market;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import java.util.List;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Table(name = "market")
+@NoArgsConstructor
+@AllArgsConstructor
 public class MarketEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Enumerated(EnumType.STRING)
+    private Market id;
 
-    private String name;
+    private String description;
 
-    @OneToMany(mappedBy = "market")
-    private List<OfferEntity> offers;
+    public MarketEntity(Market market) {
+        this.id = market;
+        this.description = market.getDescription();
+    }
 }
+
 

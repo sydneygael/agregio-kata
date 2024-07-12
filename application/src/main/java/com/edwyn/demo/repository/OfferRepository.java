@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * JPA repository for managing offer entities.
  */
-public interface JpaOfferRepository extends JpaRepository<OfferEntity, Long> {
+public interface OfferRepository extends JpaRepository<OfferEntity, Long> {
 
     /**
      * Finds all offers with their associated parks.

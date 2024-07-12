@@ -4,7 +4,7 @@ import com.edwyn.demo.domain.model.Offer;
 import com.edwyn.demo.entity.OfferEntity;
 import com.edwyn.demo.mapper.OfferMapper;
 import com.edwyn.demo.port.OfferPort;
-import com.edwyn.demo.repository.JpaOfferRepository;
+import com.edwyn.demo.repository.OfferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,11 +16,11 @@ import java.util.List;
 @Component
 public class OfferPersistenceAdapter implements OfferPort {
 
-    private final JpaOfferRepository offerRepository;
+    private final OfferRepository offerRepository;
     private final OfferMapper offerMapper;
 
     @Autowired
-    public OfferPersistenceAdapter(JpaOfferRepository offerRepository, OfferMapper offerMapper) {
+    public OfferPersistenceAdapter(OfferRepository offerRepository, OfferMapper offerMapper) {
         this.offerRepository = offerRepository;
         this.offerMapper = offerMapper;
     }
@@ -28,6 +28,7 @@ public class OfferPersistenceAdapter implements OfferPort {
     @Override
     public Offer save(Offer offer) {
         OfferEntity offerEntity = offerMapper.toEntity(offer);
+        offerEntity.getTimeBlocks().forEach(timeBlockEntity -> timeBlockEntity.setOffer(offerEntity));
         OfferEntity savedEntity = offerRepository.save(offerEntity);
         return offerMapper.toDomain(savedEntity);
     }

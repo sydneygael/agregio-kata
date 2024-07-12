@@ -2,36 +2,17 @@ package com.edwyn.demo.mapper;
 
 import com.edwyn.demo.domain.model.Offer;
 import com.edwyn.demo.domain.model.Park;
-import com.edwyn.demo.domain.model.ParkType;
 import com.edwyn.demo.domain.model.TimeBlock;
-import com.edwyn.demo.dto.CreateOfferRequest;
 import com.edwyn.demo.entity.OfferEntity;
 import com.edwyn.demo.entity.ParkEntity;
 import com.edwyn.demo.entity.TimeBlockEntity;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Mapper for converting between domain models and entities.
  */
 @Component
 public class OfferMapper {
-
-    // Other existing methods...
-
-    /**
-     * Converts a CreateOfferRequest to a list of Park.
-     *
-     * @param request the CreateOfferRequest
-     * @return the list of parks
-     */
-    public List<Park> toParks(CreateOfferRequest request) {
-        return request.parks().stream()
-                .map(park -> new Park(request.parkName(), ParkType.valueOf(request.parkType()), request.capacity()))
-                .collect(Collectors.toList());
-    }
 
     /**
      * Converts an offer entity to a domain model.
@@ -45,8 +26,8 @@ public class OfferMapper {
         offer.setQuantity(entity.getQuantity());
         offer.setPriceFloor(entity.getPriceFloor());
         offer.setMarket(entity.getMarket());
-        offer.setParks(entity.getParks().stream().map(this::toDomain).collect(Collectors.toList()));
-        offer.setTimeBlocks(entity.getTimeBlocks().stream().map(this::toDomain).collect(Collectors.toList()));
+        offer.setParks(entity.getParks().stream().map(this::toDomain).toList());
+        offer.setTimeBlocks(entity.getTimeBlocks().stream().map(this::toDomain).toList());
         return offer;
     }
 
@@ -62,8 +43,8 @@ public class OfferMapper {
         offerEntity.setQuantity(domain.getQuantity());
         offerEntity.setPriceFloor(domain.getPriceFloor());
         offerEntity.setMarket(domain.getMarket());
-        offerEntity.setParks(domain.getParks().stream().map(this::toEntity).collect(Collectors.toList()));
-        offerEntity.setTimeBlocks(domain.getTimeBlocks().stream().map(this::toEntity).collect(Collectors.toList()));
+        offerEntity.setParks(domain.getParks().stream().map(this::toEntity).toList());
+        offerEntity.setTimeBlocks(domain.getTimeBlocks().stream().map(this::toEntity).toList());
         return offerEntity;
     }
 
@@ -73,7 +54,7 @@ public class OfferMapper {
      * @param entity the park entity
      * @return the domain model
      */
-    private Park toDomain(ParkEntity entity) {
+    public Park toDomain(ParkEntity entity) {
         Park park = new Park();
         park.setId(entity.getId());
         park.setName(entity.getName());
@@ -88,7 +69,7 @@ public class OfferMapper {
      * @param domain the domain model
      * @return the park entity
      */
-    private ParkEntity toEntity(Park domain) {
+    public ParkEntity toEntity(Park domain) {
         ParkEntity parkEntity = new ParkEntity();
         parkEntity.setId(domain.getId());
         parkEntity.setName(domain.getName());
@@ -103,7 +84,7 @@ public class OfferMapper {
      * @param entity the time block entity
      * @return the domain model
      */
-    private TimeBlock toDomain(TimeBlockEntity entity) {
+    public TimeBlock toDomain(TimeBlockEntity entity) {
         TimeBlock timeBlock = new TimeBlock();
         timeBlock.setId(entity.getId());
         timeBlock.setStartHour(entity.getStartHour());
@@ -117,7 +98,7 @@ public class OfferMapper {
      * @param domain the domain model
      * @return the time block entity
      */
-    private TimeBlockEntity toEntity(TimeBlock domain) {
+    public TimeBlockEntity toEntity(TimeBlock domain) {
         TimeBlockEntity timeBlockEntity = new TimeBlockEntity();
         timeBlockEntity.setId(domain.getId());
         timeBlockEntity.setStartHour(domain.getStartHour());
@@ -125,4 +106,3 @@ public class OfferMapper {
         return timeBlockEntity;
     }
 }
-

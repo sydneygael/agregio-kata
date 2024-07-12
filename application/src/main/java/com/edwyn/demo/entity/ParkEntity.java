@@ -2,11 +2,9 @@ package com.edwyn.demo.entity;
 
 import com.edwyn.demo.domain.model.ParkType;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-
-import java.util.List;
 
 /**
  * Entity representing a park.
@@ -21,14 +19,11 @@ public class ParkEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ParkType type;
 
-    private double capacity;
+    private String name;
 
-    @ManyToMany(mappedBy = "parks", fetch = FetchType.LAZY)
-    private List<OfferEntity> offers;
+    private double capacity;
 }

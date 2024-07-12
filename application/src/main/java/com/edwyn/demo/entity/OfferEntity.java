@@ -1,6 +1,6 @@
 package com.edwyn.demo.entity;
-
 import com.edwyn.demo.domain.model.Market;
+import com.edwyn.demo.entity.converter.MarketConverter;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,14 +9,10 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.util.List;
 
-/**
- * Entity representing an offer.
- */
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "offer")
 public class OfferEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,16 +23,18 @@ public class OfferEntity {
     @Column(precision = 19, scale = 4)
     private BigDecimal priceFloor;
 
-    @Enumerated(EnumType.STRING)
+    @Convert(converter = MarketConverter.class)
     @Column(nullable = false)
     private Market market;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "offer_park",
+    @JoinTable(
+            name = "offer_park",
             joinColumns = @JoinColumn(name = "offer_id"),
-            inverseJoinColumns = @JoinColumn(name = "park_id"))
+            inverseJoinColumns = @JoinColumn(name = "park_id")
+    )
     private List<ParkEntity> parks;
 
-    @OneToMany(mappedBy = "offer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "offer", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private List<TimeBlockEntity> timeBlocks;
 }
