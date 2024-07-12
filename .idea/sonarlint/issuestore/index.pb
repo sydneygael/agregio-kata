@@ -109,13 +109,7 @@ Q.idea/sonarlint/securityhotspotstore/0/1/0154b87f9c159e96e3010af5590403cbbd0839
 Å
 Q.idea/sonarlint/securityhotspotstore/8/b/8b11330a6810846535e4b5ba2024ccfcee112862,d\5\d56131b384ca12a9b220bea2019d83fd10a7005a
 Å
-Q.idea/sonarlint/securityhotspotstore/c/e/ce63e58bcc511408de8e0306269c84e3325796a1,8\e\8ea6be4b14d6b399f311e55e865247e449791841
-Å
-Q.idea/sonarlint/securityhotspotstore/7/c/7c51f35d049e1267a08765b76262407284937243,f\c\fc0add0c2cf3e12861ef9df6fd5d633f38e06846
-Å
 Q.idea/sonarlint/securityhotspotstore/8/6/863e0292fd7e9b3e74dafd6cc01f73ba76346482,0\c\0c4799549ebca80c86406fd218445fef27b61acc
-Å
-Q.idea/sonarlint/securityhotspotstore/f/a/faf5ed661995c0b6b781d20e0229a91f1570851a,4\f\4fb523286fae30d1a9f1848b29487f2087faa5ad
 w
 G.idea/sonarlint/issuestore/8/b/8b11330a6810846535e4b5ba2024ccfcee112862,a\3\a321fb2b99b3362ff14a03922f87b6da2a922059
 w
@@ -146,3 +140,5 @@ Iapplication/src/main/java/com/edwyn/demo/repository/MarketRepository.java,6\4\
 Lapplication/src/main/java/com/edwyn/demo/adpater/ParkPersistenceAdapter.java,c\e\ce30bf6c80db110e1612a64b8b8dc57f324ed260
 e
 5application/src/main/resources/application.properties,0\3\0360cb3ca608992828b1849efd063e19f78e08c9
+9
+	readme.md,2\7\275d783e298228506068436512433d343feb52aa
