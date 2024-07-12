@@ -5,7 +5,6 @@ import com.edwyn.demo.domain.exception.TimeBlockExceedingException;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,11 +25,6 @@ public class Offer {
     private double quantity;
 
     /**
-     * Minimum price at which the energy will be sold.
-     */
-    private BigDecimal priceFloor;
-
-    /**
      * Market where the offer is placed.
      */
     private Market market;
@@ -45,9 +39,8 @@ public class Offer {
      */
     private List<TimeBlock> timeBlocks = new ArrayList<>();
 
-    public Offer(double quantity, BigDecimal priceFloor, Market market, List<Park> parks) {
+    public Offer(double quantity, Market market, List<Park> parks) {
         this.quantity = quantity;
-        this.priceFloor = priceFloor;
         this.market = market;
         this.parks = parks;
     }

@@ -24,7 +24,6 @@ public class OfferMapper {
         Offer offer = new Offer();
         offer.setId(entity.getId());
         offer.setQuantity(entity.getQuantity());
-        offer.setPriceFloor(entity.getPriceFloor());
         offer.setMarket(entity.getMarket());
         offer.setParks(entity.getParks().stream().map(this::toDomain).toList());
         offer.setTimeBlocks(entity.getTimeBlocks().stream().map(this::toDomain).toList());
@@ -41,7 +40,6 @@ public class OfferMapper {
         OfferEntity offerEntity = new OfferEntity();
         offerEntity.setId(domain.getId());
         offerEntity.setQuantity(domain.getQuantity());
-        offerEntity.setPriceFloor(domain.getPriceFloor());
         offerEntity.setMarket(domain.getMarket());
         offerEntity.setParks(domain.getParks().stream().map(this::toEntity).toList());
         offerEntity.setTimeBlocks(domain.getTimeBlocks().stream().map(this::toEntity).toList());
@@ -89,6 +87,7 @@ public class OfferMapper {
         timeBlock.setId(entity.getId());
         timeBlock.setStartHour(entity.getStartHour());
         timeBlock.setDuration(entity.getDuration());
+        timeBlock.setPriceFloor(entity.getPriceFloor());
         return timeBlock;
     }
 
@@ -103,6 +102,7 @@ public class OfferMapper {
         timeBlockEntity.setId(domain.getId());
         timeBlockEntity.setStartHour(domain.getStartHour());
         timeBlockEntity.setDuration(domain.getDuration());
+        timeBlockEntity.setPriceFloor(domain.getPriceFloor());
         return timeBlockEntity;
     }
 }

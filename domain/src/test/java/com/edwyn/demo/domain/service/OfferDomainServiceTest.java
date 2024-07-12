@@ -20,11 +20,12 @@ class OfferDomainServiceTest {
         //Given
         Market market = Market.RESERVE_PRIMAIRE;
         List<Park> parks = List.of(new Park("Park1", ParkType.SOLAR, 100.0));
-        Offer offer = new Offer(100, new BigDecimal("50.00"), market, parks);
+        BigDecimal price = new BigDecimal("50.00");
+        Offer offer = new Offer(100, market, parks);
         //when
-        offer.addTimeBlock(new TimeBlock(0, 8));
-        offer.addTimeBlock(new TimeBlock(8, 8));
-        offer.addTimeBlock(new TimeBlock(16, 8));
+        offer.addTimeBlock(new TimeBlock(0, 8, price));
+        offer.addTimeBlock(new TimeBlock(8, 8, price));
+        offer.addTimeBlock(new TimeBlock(16, 8, price));
         var offerDomainService = new OfferDomainService();
         //then
         assertTrue(offerDomainService.isValidOffer(offer));
@@ -34,11 +35,12 @@ class OfferDomainServiceTest {
     void testInvalidTimeBlocks() {
         Market market = Market.RESERVE_PRIMAIRE;
         List<Park> parks = List.of(new Park("Park1", ParkType.SOLAR, 100.0));
-        Offer offer = new Offer(100, new BigDecimal("50.00"), market, parks);
+        BigDecimal price = new BigDecimal("50.00");
+        Offer offer = new Offer(100, market, parks);
 
-        offer.addTimeBlock(new TimeBlock(0, 10));
-        offer.addTimeBlock(new TimeBlock(10, 10));
-        offer.addTimeBlock(new TimeBlock(20, 4));
+        offer.addTimeBlock(new TimeBlock(0, 10, price));
+        offer.addTimeBlock(new TimeBlock(10, 10, price));
+        offer.addTimeBlock(new TimeBlock(20, 4, price));
 
         var offerDomainService = new OfferDomainService();
 
@@ -73,22 +75,24 @@ class OfferDomainServiceTest {
     void testAddInvalidTimeBlockExceedingLimit() {
         Market market = Market.RESERVE_PRIMAIRE;
         List<Park> parks = List.of(new Park("Park1", ParkType.SOLAR, 100.0));
-        Offer offer = new Offer(100, new BigDecimal("50.00"), market, parks);
+        BigDecimal price = new BigDecimal("50.00");
+        Offer offer = new Offer(100, market, parks);
 
-        offer.addTimeBlock(new TimeBlock(0, 16));
+        offer.addTimeBlock(new TimeBlock(0, 16, price));
 
-        assertThrows(TimeBlockExceedingException.class, () -> offer.addTimeBlock(new TimeBlock(16, 9)));
+        assertThrows(TimeBlockExceedingException.class, () -> offer.addTimeBlock(new TimeBlock(16, 9, price)));
     }
 
     @Test
     void testAddInvalidTimeBlockEarlierStartHour() {
         Market market = Market.RESERVE_PRIMAIRE;
         List<Park> parks = List.of(new Park("Park1", ParkType.SOLAR, 100.0));
-        Offer offer = new Offer(100, new BigDecimal("50.00"), market, parks);
+        BigDecimal price = new BigDecimal("50.00");
+        Offer offer = new Offer(100, market, parks);
 
-        offer.addTimeBlock(new TimeBlock(0, 8));
-        offer.addTimeBlock(new TimeBlock(8, 8));
+        offer.addTimeBlock(new TimeBlock(0, 8, price));
+        offer.addTimeBlock(new TimeBlock(8, 8, price));
 
-        assertThrows(InvalidTimeBlockException.class, () -> offer.addTimeBlock(new TimeBlock(7, 8)));
+        assertThrows(InvalidTimeBlockException.class, () -> offer.addTimeBlock(new TimeBlock(7, 8, price)));
     }
 }

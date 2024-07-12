@@ -26,11 +26,11 @@ public class OfferDomainService {
      * @return the created offer
      */
     public Offer createOffer(double quantity, BigDecimal priceFloor, Market market, List<Park> parks, List<Integer> timeBlocks) throws InvalidTimeBlockException, TimeBlockExceedingException {
-        Offer offer = new Offer(quantity, priceFloor, market, parks);
+        Offer offer = new Offer(quantity, market, parks);
 
         int startHour = 0;
         for (int duration : timeBlocks) {
-            TimeBlock timeBlock = new TimeBlock(startHour, duration);
+            TimeBlock timeBlock = new TimeBlock(startHour, duration,priceFloor);
             offer.addTimeBlock(timeBlock);
             startHour += duration;
         }

@@ -3,6 +3,8 @@ package com.edwyn.demo.domain.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 /**
  * Domain model representing a time block within an offer.
  */
@@ -24,8 +26,14 @@ public class TimeBlock {
      */
     private int duration;
 
-    public TimeBlock(int startHour, int duration) {
+    /**
+     * Minimum price at which the energy will be sold.
+     */
+    private BigDecimal priceFloor;
+
+    public TimeBlock(int startHour, int duration,BigDecimal priceFloor) {
         this.startHour = startHour;
         this.duration = duration;
+        this.priceFloor = priceFloor;
     }
 }
