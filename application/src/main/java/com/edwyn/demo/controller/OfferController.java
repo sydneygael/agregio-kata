@@ -2,8 +2,7 @@ package com.edwyn.demo.controller;
 
 import com.edwyn.demo.domain.model.Offer;
 import com.edwyn.demo.dto.CreateOfferRequest;
-import com.edwyn.demo.service.OfferService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.edwyn.demo.service.OfferUseCase;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,25 +14,24 @@ import java.util.List;
 @RequestMapping("/offers")
 public class OfferController {
 
-    private final OfferService offerService;
+    private final OfferUseCase offerUseCase;
 
-    @Autowired
-    public OfferController(OfferService offerService) {
-        this.offerService = offerService;
+    public OfferController(OfferUseCase offerUseCase) {
+        this.offerUseCase = offerUseCase;
     }
 
     @PostMapping
     public Offer createOffer(@RequestBody CreateOfferRequest request) {
-        return offerService.createOffer(request);
+        return offerUseCase.createOffer(request);
     }
 
     @GetMapping("/{market}")
     public List<Offer> getOffersByMarket(@PathVariable String market) {
-        return offerService.getOffersByMarket(market);
+        return offerUseCase.getOffersByMarket(market);
     }
 
     @GetMapping("/{offerId}/parks")
     public Offer getOfferWithParks(@PathVariable Long offerId) {
-        return offerService.getOfferWithParks(offerId);
+        return offerUseCase.getOfferWithParks(offerId);
     }
 }

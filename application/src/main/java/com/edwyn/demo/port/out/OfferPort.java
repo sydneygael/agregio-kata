@@ -1,4 +1,4 @@
-package com.edwyn.demo.port;
+package com.edwyn.demo.port.out;
 
 import com.edwyn.demo.domain.model.Offer;
 

@@ -3,7 +3,7 @@ package com.edwyn.demo.adpater;
 import com.edwyn.demo.domain.model.Park;
 import com.edwyn.demo.domain.model.ParkType;
 import com.edwyn.demo.mapper.OfferMapper;
-import com.edwyn.demo.port.ParkPort;
+import com.edwyn.demo.port.out.ParkPort;
 import com.edwyn.demo.repository.ParkRepository;
 import org.springframework.stereotype.Component;
 

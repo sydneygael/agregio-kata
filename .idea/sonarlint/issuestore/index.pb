@@ -142,3 +142,17 @@ e
 5application/src/main/resources/application.properties,0\3\0360cb3ca608992828b1849efd063e19f78e08c9
 9
 	readme.md,2\7\275d783e298228506068436512433d343feb52aa
+p
+@application/src/main/java/com/edwyn/demo/port/out/OfferPort.java,4\1\41ac4e0aec68081481f2dc15ffcd249641a6885a
+o
+?application/src/main/java/com/edwyn/demo/port/out/ParkPort.java,5\3\530c36362274ee538085be961bca259509d8a9b7
+u
+Eapplication/src/main/java/com/edwyn/demo/port/in/OfferManagement.java,c\f\cf6a03207bbc3616e28943a7bc598e33e36560f6
+j
+:application/src/main/java/com/edwyn/demo/port/usecase.java,d\f\dfcfd9e4ccd62e833cd241179dfe2e14f223dfcb
+j
+:application/src/main/java/com/edwyn/demo/port/Usecase.java,7\1\711ec596aaf6dfcfdca9cc8558129a98e63a9719
+r
+Bapplication/src/main/java/com/edwyn/demo/service/OfferUseCase.java,8\6\8607d949f3ae5962078cbdcf317f47e257d34300
+j
+:application/src/main/java/com/edwyn/demo/port/UseCase.java,4\7\478595cd4780fe53192dca6b67011f5ddbbc7403

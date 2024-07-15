@@ -4,10 +4,10 @@ import com.edwyn.demo.domain.model.Offer;
 import com.edwyn.demo.domain.model.Park;
 import com.edwyn.demo.domain.service.OfferDomainService;
 import com.edwyn.demo.dto.CreateOfferRequest;
-import com.edwyn.demo.mapper.OfferMapper;
-import com.edwyn.demo.port.OfferPort;
-import com.edwyn.demo.port.ParkPort;
-import org.springframework.stereotype.Service;
+import com.edwyn.demo.port.UseCase;
+import com.edwyn.demo.port.in.OfferManagement;
+import com.edwyn.demo.port.out.OfferPort;
+import com.edwyn.demo.port.out.ParkPort;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
@@ -16,14 +16,14 @@ import java.util.List;
 /**
  * Application service for managing offers.
  */
-@Service
-public class OfferService {
+@UseCase
+public class OfferUseCase implements OfferManagement {
 
     private final OfferDomainService offerDomainService;
     private final OfferPort offerPort;
     private final ParkPort parkPort;
 
-    public OfferService(OfferDomainService offerDomainService,
+    public OfferUseCase(OfferDomainService offerDomainService,
                         OfferPort offerPort,
                         ParkPort parkPort) {
         this.offerDomainService = offerDomainService;
@@ -32,6 +32,7 @@ public class OfferService {
     }
 
     @Transactional
+    @Override
     public Offer createOffer(CreateOfferRequest request) {
         BigDecimal priceFloor = new BigDecimal(request.priceFloor());
         List<Park> parks = request.parks().stream().map(park -> {
@@ -49,10 +50,12 @@ public class OfferService {
         return offerPort.save(offer);
     }
 
+    @Override
     public Offer getOfferWithParks(Long offerId) {
         return offerPort.findOfferWithParks(offerId);
     }
 
+    @Override
     public List<Offer> getOffersByMarket(String market) {
         return offerPort.findByMarket(market);
     }

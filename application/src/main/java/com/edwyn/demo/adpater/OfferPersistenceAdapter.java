@@ -3,7 +3,7 @@ package com.edwyn.demo.adpater;
 import com.edwyn.demo.domain.model.Offer;
 import com.edwyn.demo.entity.OfferEntity;
 import com.edwyn.demo.mapper.OfferMapper;
-import com.edwyn.demo.port.OfferPort;
+import com.edwyn.demo.port.out.OfferPort;
 import com.edwyn.demo.repository.OfferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
