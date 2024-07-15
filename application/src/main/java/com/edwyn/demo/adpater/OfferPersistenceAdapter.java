@@ -5,7 +5,6 @@ import com.edwyn.demo.entity.OfferEntity;
 import com.edwyn.demo.mapper.OfferMapper;
 import com.edwyn.demo.port.out.OfferPort;
 import com.edwyn.demo.repository.OfferRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,7 +18,6 @@ public class OfferPersistenceAdapter implements OfferPort {
     private final OfferRepository offerRepository;
     private final OfferMapper offerMapper;
 
-    @Autowired
     public OfferPersistenceAdapter(OfferRepository offerRepository, OfferMapper offerMapper) {
         this.offerRepository = offerRepository;
         this.offerMapper = offerMapper;
