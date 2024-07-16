@@ -2,7 +2,6 @@ package com.edwyn.demo.domain.service;
 
 import com.edwyn.demo.domain.exception.InvalidTimeBlockException;
 import com.edwyn.demo.domain.exception.TimeBlockExceedingException;
-import com.edwyn.demo.domain.model.*;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

@@ -9,8 +9,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>domain</module>
-        <module>application</module>
+        <module>offers</module>
+        <module>common</module>
+        <module>parks</module>
     </modules>
 
     <properties>
@@ -35,6 +36,12 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>com.edwyn.demo</groupId>
+            <artifactId>common</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
